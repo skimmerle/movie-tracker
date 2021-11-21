@@ -70,36 +70,40 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     initialize: function initialize() {
-      //change with axios call
+      var _this = this;
 
-      /*this.$http.get(
-          'v1.0/movies'
-      ).then(response => {
-          this.movies = response.data;
-      }).catch(error => {
-          console.log(error.response)
-      });*/
-      this.movies = [{
-        id: 1,
-        name: 'Frog Yogurt',
-        year: 2012,
-        seen: true
-      }, {
-        id: 2,
-        name: 'Frozen',
-        year: 2013,
-        seen: true
-      }, {
-        id: 3,
-        name: 'Yogurt',
-        year: 2014,
-        seen: false
-      }, {
-        id: 4,
-        name: 'Frozed Yogurt',
-        year: 2015,
-        seen: false
-      }];
+      //change with axios call
+      this.$http.get('v1.0/movies').then(function (response) {
+        _this.movies = response.data;
+      })["catch"](function (error) {
+        console.log(error.response);
+      });
+      /*this.movies = [
+          {
+              id: 1,
+              name: 'Frog Yogurt',
+              year: 2012,
+              seen: true,
+          },
+          {
+              id: 2,
+              name: 'Frozen',
+              year: 2013,
+              seen: true,
+          },
+          {
+              id: 3,
+              name: 'Yogurt',
+              year: 2014,
+              seen: false,
+          },
+          {
+              id: 4,
+              name: 'Frozed Yogurt',
+              year: 2015,
+              seen: false,
+          },
+      ]*/
     },
     deleteItem: function deleteItem(item) {
       this.movies.splice(this.movies.indexOf(item), 1);

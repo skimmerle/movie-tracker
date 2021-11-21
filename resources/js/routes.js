@@ -16,7 +16,7 @@ const router = new VueRouter({
 });
 
 //@todo: cookie check einbauen
-const isAuthenticated = true;
+const isAuthenticated = false;
 
 router.beforeEach((to, from, next) => {
     if ((to.name !== 'login' || to.name === null) && !isAuthenticated) next({ name: 'login' })

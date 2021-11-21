@@ -57,14 +57,14 @@ export default {
     methods: {
         initialize() {
             //change with axios call
-            /*this.$http.get(
+            this.$http.get(
                 'v1.0/movies'
             ).then(response => {
                 this.movies = response.data;
             }).catch(error => {
                 console.log(error.response)
-            });*/
-            this.movies = [
+            });
+            /*this.movies = [
                 {
                     id: 1,
                     name: 'Frog Yogurt',
@@ -89,7 +89,7 @@ export default {
                     year: 2015,
                     seen: false,
                 },
-            ]
+            ]*/
         },
         deleteItem(item) {
             this.movies.splice(this.movies.indexOf(item), 1)
