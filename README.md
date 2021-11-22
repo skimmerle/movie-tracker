@@ -46,3 +46,13 @@ use the frontend with
 * `php artisan serve`
 
 The Frontend is now available on the URL http://localhost:8000
+
+### Developing Backend
+The controllers for the api are stored in the directory 
+app/Http/Controllers.
+The communication with The Open Movie Database api is handled in
+the OpenMovie client. The sources are stored in packages/MovieApi.
+
+## Production
+For production mode, you can use the apache vhost stored in 
+serverConfig/vhost.conf as example to get your apache running
