@@ -19,7 +19,6 @@ Route::group([
     'prefix'     => 'v1.0',
     'middleware' => [
 //        'auth:sanctum',
-        'throttle:global'
     ]
 ], function () {
     Route::get('/movies', [
