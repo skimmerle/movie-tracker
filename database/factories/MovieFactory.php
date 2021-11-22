@@ -14,6 +14,7 @@ class MovieFactory extends Factory
             'movie_id' => $this->faker->name(),
             'title' => $this->faker->unique()->text(25),
             'year' => $this->faker->year(),
+            'seen' => $this->faker->boolean(),
         ];
     }
 }

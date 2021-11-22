@@ -47,18 +47,45 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      email: "",
-      password: ""
+      email: "steffen@schmidts.casa",
+      password: "password",
+      snackbar: false,
+      snackbarText: ''
     };
   },
   methods: {
     login: function login() {
+      var _this = this;
+
       this.$http.post('/login', {
         email: this.email,
         password: this.password
+      }).then(function (response) {
+        Vue.prototype.$isAuthenticated = true;
+
+        _this.$router.push('/home');
+      })["catch"](function (response) {
+        _this.snackbarText = 'Es ist ein Fehler aufgetreten';
+        _this.snackbar = true;
       });
     }
   }
@@ -214,6 +241,47 @@ var render = function () {
           ),
         ],
         1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-snackbar",
+        {
+          scopedSlots: _vm._u([
+            {
+              key: "action",
+              fn: function (ref) {
+                var attrs = ref.attrs
+                return [
+                  _c(
+                    "v-btn",
+                    _vm._b(
+                      {
+                        attrs: { color: "red", text: "" },
+                        on: {
+                          click: function ($event) {
+                            _vm.snackbar = false
+                          },
+                        },
+                      },
+                      "v-btn",
+                      attrs,
+                      false
+                    ),
+                    [_vm._v("\n                X\n            ")]
+                  ),
+                ]
+              },
+            },
+          ]),
+          model: {
+            value: _vm.snackbar,
+            callback: function ($$v) {
+              _vm.snackbar = $$v
+            },
+            expression: "snackbar",
+          },
+        },
+        [_vm._v("\n        " + _vm._s(_vm.snackbarText) + "\n\n        ")]
       ),
     ],
     1

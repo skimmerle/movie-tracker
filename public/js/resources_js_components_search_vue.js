@@ -91,7 +91,7 @@ __webpack_require__.r(__webpack_exports__);
       headers: [{
         text: 'Filmtitel',
         align: 'start',
-        value: 'name'
+        value: 'title'
       }, {
         text: 'Erscheinungsjahr',
         value: 'year'
@@ -108,36 +108,23 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     search: function search() {
-      /*
-      this.$http.post(
-          '/v1.0/movies/search',
-          {
-              title: this.title
-          }
-      ).then(response => {
-          this.movies = response.data;
-      }).catch(response => {
-          this.movies = [];
-      });*/
-      this.movies = [{
-        id: 1,
-        name: 'Frog Yogurt',
-        year: 2012
-      }, {
-        id: 2,
-        name: 'Frozen',
-        year: 2013
-      }];
-    },
-    save: function save(movie) {
       var _this = this;
 
-      this.$http.post('/v1.0/movies', movie).then(function (response) {
-        _this.snackbarText = 'Film "' + movie.name + '" erfolgreich gespeichert';
-        _this.snackbar = true;
+      this.$http.get('/api/v1.0/movies/search?title=' + this.title).then(function (response) {
+        _this.movies = response.data.data;
       })["catch"](function (response) {
-        _this.snackbarText = 'Es ist ein Fehler aufgetreten';
-        _this.snackbar = true;
+        _this.movies = [];
+      });
+    },
+    save: function save(movie) {
+      var _this2 = this;
+
+      this.$http.post('/api/v1.0/movies', movie).then(function (response) {
+        _this2.snackbarText = 'Film "' + movie.title + '" erfolgreich gespeichert';
+        _this2.snackbar = true;
+      })["catch"](function (response) {
+        _this2.snackbarText = 'Es ist ein Fehler aufgetreten';
+        _this2.snackbar = true;
       });
     }
   }

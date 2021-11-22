@@ -32,14 +32,32 @@
                 </v-btn>
             </v-card-actions>
         </v-card>
+        <v-snackbar
+            v-model="snackbar"
+        >
+            {{ snackbarText }}
+
+            <template v-slot:action="{ attrs }">
+                <v-btn
+                    color="red"
+                    text
+                    v-bind="attrs"
+                    @click="snackbar = false"
+                >
+                    X
+                </v-btn>
+            </template>
+        </v-snackbar>
     </div>
 </template>
 <script>
 export default {
     data() {
         return {
-            email: "",
-            password: ""
+            email: "steffen@schmidts.casa",
+            password: "password",
+            snackbar: false,
+            snackbarText: ''
         };
     },
     methods: {
@@ -50,7 +68,13 @@ export default {
                     email: this.email,
                     password: this.password
                 }
-            );
+            ).then(response => {
+                Vue.prototype.$isAuthenticated = true;
+                this.$router.push('/home');
+            }).catch(response => {
+                this.snackbarText = 'Es ist ein Fehler aufgetreten';
+                this.snackbar = true;
+            });
         }
     }
 };

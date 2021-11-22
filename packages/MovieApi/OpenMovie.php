@@ -26,8 +26,10 @@ class OpenMovie implements MovieApi
     public function searchByTitle(string $title): array
     {
         return $this->client->sendSearchRequest('/', [
-            's' => $title,
-            'r' => 'json',
+            'query' => [
+                's' => $title,
+                'r' => 'json',
+            ]
         ]);
     }
 }

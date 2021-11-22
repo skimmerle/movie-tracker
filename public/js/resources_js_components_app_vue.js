@@ -50,7 +50,7 @@ __webpack_require__.r(__webpack_exports__);
       headers: [{
         text: 'Filmtitel',
         align: 'start',
-        value: 'name'
+        value: 'title'
       }, {
         text: 'Erscheinungsjahr',
         value: 'year'
@@ -72,42 +72,13 @@ __webpack_require__.r(__webpack_exports__);
     initialize: function initialize() {
       var _this = this;
 
-      //change with axios call
-      this.$http.get('v1.0/movies').then(function (response) {
-        _this.movies = response.data;
-      })["catch"](function (error) {
-        console.log(error.response);
+      this.$http.get('/api/v1.0/movies').then(function (response) {
+        _this.movies = response.data.data;
       });
-      /*this.movies = [
-          {
-              id: 1,
-              name: 'Frog Yogurt',
-              year: 2012,
-              seen: true,
-          },
-          {
-              id: 2,
-              name: 'Frozen',
-              year: 2013,
-              seen: true,
-          },
-          {
-              id: 3,
-              name: 'Yogurt',
-              year: 2014,
-              seen: false,
-          },
-          {
-              id: 4,
-              name: 'Frozed Yogurt',
-              year: 2015,
-              seen: false,
-          },
-      ]*/
     },
     deleteItem: function deleteItem(item) {
       this.movies.splice(this.movies.indexOf(item), 1);
-      this.$http["delete"]('v1.0/movies/' + item.id);
+      this.$http["delete"]('/api/v1.0/movies/' + item.movie_id);
     }
   }
 });
@@ -206,7 +177,7 @@ var render = function () {
         attrs: {
           headers: _vm.headers,
           items: _vm.movies,
-          "item-key": "id",
+          "item-key": "movie_id",
           "sort-by": "name",
           "loading-text": "Wird geladen... Bitte warten",
         },

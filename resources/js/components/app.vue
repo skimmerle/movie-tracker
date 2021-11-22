@@ -3,7 +3,7 @@
         <v-data-table
             :headers="headers"
             :items="movies"
-            item-key="id"
+            item-key="movie_id"
             class="elevation-1"
             sort-by="name"
             loading-text="Wird geladen... Bitte warten"
@@ -39,7 +39,7 @@ export default {
                 {
                     text: 'Filmtitel',
                     align: 'start',
-                    value: 'name',
+                    value: 'title',
                 },
                 {
                     text: 'Erscheinungsjahr',
@@ -56,45 +56,16 @@ export default {
     },
     methods: {
         initialize() {
-            //change with axios call
             this.$http.get(
-                'v1.0/movies'
+                '/api/v1.0/movies'
             ).then(response => {
-                this.movies = response.data;
-            }).catch(error => {
-                console.log(error.response)
+                this.movies = response.data.data;
             });
-            /*this.movies = [
-                {
-                    id: 1,
-                    name: 'Frog Yogurt',
-                    year: 2012,
-                    seen: true,
-                },
-                {
-                    id: 2,
-                    name: 'Frozen',
-                    year: 2013,
-                    seen: true,
-                },
-                {
-                    id: 3,
-                    name: 'Yogurt',
-                    year: 2014,
-                    seen: false,
-                },
-                {
-                    id: 4,
-                    name: 'Frozed Yogurt',
-                    year: 2015,
-                    seen: false,
-                },
-            ]*/
         },
         deleteItem(item) {
             this.movies.splice(this.movies.indexOf(item), 1)
             this.$http.delete(
-                'v1.0/movies/' + item.id
+                '/api/v1.0/movies/' + item.movie_id
             );
         }
     }

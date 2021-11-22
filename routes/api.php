@@ -14,13 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::group([
     'prefix'     => 'v1.0',
-    'middleware' => ['json_response', 'throttle:global', 'auth'],
+    'middleware' => []//,['throttle:global'],
 ], function () {
     Route::get('/movies', [
         \App\Http\Controllers\MovieController::class,
@@ -41,4 +37,8 @@ Route::group([
         \App\Http\Controllers\SearchController::class,
         'search',
     ])->name('movies.search');
+});
+
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
 });

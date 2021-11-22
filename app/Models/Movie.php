@@ -9,8 +9,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property int    $userId
- * @property string $movieId
+ * @property int    $user_id
+ * @property string $movie_id
  * @property string $title
  * @property int    $year
  * @property bool   $seen
@@ -21,8 +21,8 @@ class Movie extends Model
     use HasFactory;
 
     public $fillable = [
-        'movieId',
-        'userId',
+        'movie_id',
+        'user_id',
         'title',
         'year',
         'seen',
@@ -34,6 +34,6 @@ class Movie extends Model
 
     public function scopeWithUserId(Builder $query, int $userId)
     {
-        return $query->where('userId', $userId);
+        return $query->where('user_id', $userId);
     }
 }

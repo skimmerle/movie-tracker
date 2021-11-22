@@ -6,29 +6,29 @@ namespace Skimmerle\MovieApi\Models;
 
 class Movie
 {
-    private string $id;
-    private string $title;
-    private int $publicationYear;
+    public string $id;
+    public string $title;
+    public int $year;
 
-    public function __construct(string $id, string $title, int $publicationYear)
+    public function __construct(string $id, string $title, int $year)
     {
 
         $this->id              = $id;
         $this->title           = $title;
-        $this->publicationYear = $publicationYear;
+        $this->year = $year;
     }
 
     public static function createByArray(array $data): ?Movie
     {
         $id         = data_get($data, 'imdbID');
         $title           = data_get($data, 'Title');
-        $publicationYear = data_get($data, 'Year');
+        $year = (int)data_get($data, 'Year');
 
-        if (empty($id) || empty($title) || empty($publicationYear)) {
+        if (empty($id) || empty($title) || empty($year)) {
             return null;
         }
 
-        return new static($id, $title, $publicationYear);
+        return new static($id, $title, $year);
     }
 
     public function getId(): string
@@ -41,8 +41,8 @@ class Movie
         return $this->title;
     }
 
-    public function getPublicationYear(): int
+    public function getYear(): int
     {
-        return $this->publicationYear;
+        return $this->year;
     }
 }

@@ -80,7 +80,7 @@ export default {
                 {
                     text: 'Filmtitel',
                     align: 'start',
-                    value: 'name',
+                    value: 'title',
                 },
                 {
                     text: 'Erscheinungsjahr',
@@ -94,36 +94,20 @@ export default {
     },
     methods: {
         search() {
-            /*
-            this.$http.post(
-                '/v1.0/movies/search',
-                {
-                    title: this.title
-                }
+            this.$http.get(
+                '/api/v1.0/movies/search?title=' + this.title
             ).then(response => {
-                this.movies = response.data;
+                this.movies = response.data.data;
             }).catch(response => {
                 this.movies = [];
-            });*/
-            this.movies = [
-                {
-                    id: 1,
-                    name: 'Frog Yogurt',
-                    year: 2012,
-                },
-                {
-                    id: 2,
-                    name: 'Frozen',
-                    year: 2013,
-                }
-            ]
+            });
         },
         save(movie) {
             this.$http.post(
-                '/v1.0/movies',
+                '/api/v1.0/movies',
                 movie
             ).then(response => {
-                this.snackbarText = 'Film "' + movie.name + '" erfolgreich gespeichert';
+                this.snackbarText = 'Film "' + movie.title + '" erfolgreich gespeichert';
                 this.snackbar = true;
             }).catch(response => {
                 this.snackbarText = 'Es ist ein Fehler aufgetreten';

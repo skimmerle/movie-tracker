@@ -14,12 +14,13 @@ class Movie extends Migration
     public function up()
     {
         Schema::create('movies', function (Blueprint $table) {
-            $table->string('movieId')->primary();
-            $table->integer('userId')->primary();
+            $table->string('movie_id');
+            $table->integer('user_id');
             $table->string('title');
             $table->integer('year');
             $table->boolean('seen');
             $table->timestamps();
+            $table->primary(['movie_id', 'user_id']);
         });
     }
 
