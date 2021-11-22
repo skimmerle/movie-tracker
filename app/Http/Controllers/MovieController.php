@@ -8,7 +8,6 @@ use App\Models\Movie;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Auth;
 
 class MovieController extends Controller
 {
@@ -23,7 +22,7 @@ class MovieController extends Controller
     {
         $movie          = new Movie();
         $movie->user_id  = 1;
-        $movie->movie_id = (string)$request->input('movieId');
+        $movie->movie_id = (string)$request->input('id');
         $movie->title   = (string)$request->input('title');
         $movie->year    = (int)$request->input('year');
         $movie->seen    = (bool)$request->input('seen');

@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,7 +17,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::group([
     'prefix'     => 'v1.0',
-    'middleware' => []//,['throttle:global'],
+    'middleware' => [
+//        'auth:sanctum',
+        'throttle:global'
+    ]
 ], function () {
     Route::get('/movies', [
         \App\Http\Controllers\MovieController::class,
