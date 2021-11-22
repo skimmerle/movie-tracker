@@ -29,7 +29,7 @@ class OpenMovie implements MovieApi
             'query' => [
                 's' => $title,
                 'r' => 'json',
-            ]
+            ],
         ]);
     }
 }

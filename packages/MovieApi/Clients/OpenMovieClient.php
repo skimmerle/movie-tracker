@@ -34,10 +34,10 @@ class OpenMovieClient
         if (empty($content)) {
             return [];
         }
-        if(data_get($content, 'Response') === false) {
+        if (data_get($content, 'Response') === false) {
             throw new Exception(data_get($content, 'Error', 'Error happened during search request'));
         }
-        if(empty(data_get($content, 'Search')) || !is_array(data_get($content, 'Search'))) {
+        if (empty(data_get($content, 'Search')) || !is_array(data_get($content, 'Search'))) {
             return [];
         }
 

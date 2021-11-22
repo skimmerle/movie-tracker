@@ -13,16 +13,16 @@ class Movie
     public function __construct(string $id, string $title, int $year)
     {
 
-        $this->id              = $id;
-        $this->title           = $title;
-        $this->year = $year;
+        $this->id    = $id;
+        $this->title = $title;
+        $this->year  = $year;
     }
 
     public static function createByArray(array $data): ?Movie
     {
-        $id         = data_get($data, 'imdbID');
-        $title           = data_get($data, 'Title');
-        $year = (int)data_get($data, 'Year');
+        $id    = data_get($data, 'imdbID');
+        $title = data_get($data, 'Title');
+        $year  = (int)data_get($data, 'Year');
 
         if (empty($id) || empty($title) || empty($year)) {
             return null;
