@@ -13,7 +13,7 @@ mark them as seen
   OPEN_MOVIE_API_KEY in your .env file
 * Set your database password as DB_PASSWORD in your .env file
 
-## Developing
+## Development
 To run the project on your local machine you will need
 * At least PHP 7.4 installed
 * Docker (https://www.docker.com/)
@@ -33,7 +33,7 @@ E-Mail: steffen@schmidts.casa<br/>
 Password: password
 </details>
 
-### Developing Frontend
+### Frontend Development
 Instead of production build you should use the development build
 * `npm run dev`
 * `npm run watch`
@@ -47,7 +47,7 @@ use the frontend with
 
 The Frontend is now available on the URL http://localhost:8000
 
-### Developing Backend
+### Backend Development
 The controllers for the api are stored in the directory 
 app/Http/Controllers.
 The communication with The Open Movie Database api is handled in
