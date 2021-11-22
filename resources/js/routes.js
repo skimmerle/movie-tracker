@@ -7,7 +7,7 @@ import search from './routes/search';
 Vue.use(VueRouter);
 const router = new VueRouter({
     mode: 'history',
-    scrollBehavior: (to, from, savedPosition) => ({ y: 0 }),
+    scrollBehavior: (to, from, savedPosition) => ({y: 0}),
     routes: [
         ...home,
         ...login,
@@ -15,11 +15,9 @@ const router = new VueRouter({
     ],
 });
 
-//Vue.prototype.$isAuthenticated = true;
-
 router.beforeEach((to, from, next) => {
-    if ((to.name !== 'login' || to.name === null) && !Vue.prototype.$isAuthenticated) next({ name: 'login' })
-    if ((to.name === 'login' || to.name === null) && Vue.prototype.$isAuthenticated) next({ name: 'home' })
+    if ((to.name !== 'login' || to.name === null) && !Vue.prototype.$isAuthenticated) next({name: 'login'})
+    if ((to.name === 'login' || to.name === null) && Vue.prototype.$isAuthenticated) next({name: 'home'})
     next()
 });
 

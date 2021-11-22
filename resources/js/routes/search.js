@@ -1,4 +1,4 @@
-const search = () =>import ( '../components/search.vue')
+const search = () => import ( '../components/search.vue')
 
 export default [
     {
