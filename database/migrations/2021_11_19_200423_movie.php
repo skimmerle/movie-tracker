@@ -21,6 +21,8 @@ class Movie extends Migration
             $table->boolean('seen');
             $table->timestamps();
             $table->primary(['movie_id', 'user_id']);
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
