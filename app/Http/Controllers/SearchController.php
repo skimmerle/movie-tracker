@@ -13,7 +13,7 @@ class SearchController extends Controller
     public function search(Request $request, OpenMovie $openMovie): JsonResponse
     {
         $request->validate([
-            'title' => 'required|string|max:255'
+            'title' => 'required|string|max:255',
         ]);
 
         $title = (string)$request->input('title');

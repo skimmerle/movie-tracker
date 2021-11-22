@@ -9,7 +9,7 @@ use Illuminate\Contracts\Support\Jsonable;
 class SearchResponse implements Jsonable
 {
     public array $data = [
-        'success' => true
+        'success' => true,
     ];
 
     public function toJson($options = 0)

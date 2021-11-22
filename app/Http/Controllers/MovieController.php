@@ -20,12 +20,12 @@ class MovieController extends Controller
 
     public function add(Request $request): JsonResponse
     {
-        $movie          = new Movie();
+        $movie           = new Movie();
         $movie->user_id  = 1;
         $movie->movie_id = (string)$request->input('id');
-        $movie->title   = (string)$request->input('title');
-        $movie->year    = (int)$request->input('year');
-        $movie->seen    = (bool)$request->input('seen');
+        $movie->title    = (string)$request->input('title');
+        $movie->year     = (int)$request->input('year');
+        $movie->seen     = (bool)$request->input('seen');
 
         $movie->save();
 
